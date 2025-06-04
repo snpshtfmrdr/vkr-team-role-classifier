@@ -21,8 +21,8 @@
 1. Клонируйте репозиторий:
 
    ```bash
-   git clone https://github.com/snpshtfmrdr/vkr-team-role-classifier.git)](https://github.com/snpshtfmrdr/vkr-team-role-classifier.git
-   cd team-role-classifier
+   git clone https://github.com/snpshtfmrdr/vkr-team-role-classifier.git
+   cd vkr-team-role-classifier
    ```
 
 2. Установите зависимости:

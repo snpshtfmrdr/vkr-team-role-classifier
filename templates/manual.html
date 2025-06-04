@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Оценка кандидата</title>
+        <link rel="stylesheet"
+            href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+
+    <body>
+        <h1>Оценка ролей на основе BIG-five</h1>
+        <h2>Ручной ввод</h2>
+
+        <div style="text-align: center;">
+            <a href="{{ url_for('index') }}">
+                <button type="button" class="telegram-button">CSV-ввод</button>
+            </a>
+            <a href="/train"><button type="button"
+                    class="config-button">Настройки</button></a>
+            <a href="/description"><button type="button"
+                    class="help-button">Справка</button></a>
+
+        </div>
+        {% if prediction %}
+        <h2>Результат: {{ prediction }}</h2>
+        {% endif %}
+        <form method="post">
+            <div
+                style="margin-bottom: 30px; text-align: center; padding: 10px;">
+                <label>Загрузить CSV:</label>
+                <input type="file" class="telegram-button" accept=".csv"
+                    onchange="loadCSV(event)">
+                <button type="submit" class="config-button">Определить
+                    роль</button>
+                <button type="button" class="hell-button"
+                    onclick="resetSliders()">Сбросить значения</button>
+
+            </div>
+            {% for feature in features %}
+            <div class="range-container">
+                <label>{{ feature }}:</label>
+                <div class="scale-labels">
+                    <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                </div>
+                <div class="scale-labels">
+                    <span>Совершенно неверно</span><span>Ни верно, ни
+                        неверно</span><span>Совершенно верно</span>
+                </div>
+                <input type="range" name="feature{{ loop.index }}"
+                    id="slider{{ loop.index }}" min="1" max="5" step="1"
+                    value="{{ values[loop.index0] if values else 3 }}"
+                    oninput="document.getElementById('output{{ loop.index }}').value = this.value">
+                <output id="output{{ loop.index }}">{{ values[loop.index0] if
+                    values else 3 }}</output>
+
+            </div>
+            {% endfor %}
+
+            <div style="text-align: center;">
+                <button type="submit" class="telegram-button">Определить
+                    роль</button>
+            </div>
+        </form>
+
+        <script>
+        function loadCSV(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const text = e.target.result.trim();
+                const rows = text.split(/\r?\n/);
+                if (rows.length === 0) {
+                    alert("Файл пустой");
+                    return;
+                }
+
+
+                const firstRow = rows[0].split(/[\t,;]/).map(s => s.trim());
+                const firstRowNumbers = firstRow.map(Number);
+                const isHeader = firstRowNumbers.some(isNaN);
+
+
+                const dataRow = isHeader ? rows[1] : rows[0];
+                if (!dataRow) {
+                    alert("Нет строки с данными");
+                    return;
+                }
+
+                const values = dataRow.split(/[\t,;]/).map(s => Number(s.trim()));
+                if (values.length !== 50) {
+                    alert("Файл должен содержать ровно 50 чисел в строке данных.");
+                    return;
+                }
+
+                for (let i = 1; i <= 50; i++) {
+                    const val = Math.min(Math.max(values[i - 1], 1), 5);
+                    const slider = document.getElementById('slider' + i);
+                    const output = document.getElementById('output' + i);
+                    if (slider && output) {
+                        slider.value = val;
+                        output.value = val;
+                    }
+                }
+            };
+            reader.readAsText(file, 'UTF-8');
+        }
+        function resetSliders() {
+            for (let i = 1; i <= 50; i++) {
+                const slider = document.getElementById('slider' + i);
+                const output = document.getElementById('output' + i);
+                if (slider && output) {
+                    slider.value = 3;
+                    output.value = 3;
+                }
+            }
+        }
+    </script>
+    </body>
+
+</html>

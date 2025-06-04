@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Конфигурация системы</title>
+        <link rel="stylesheet"
+            href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+
+    <body>
+        <h1>Обучение модели кластеризации</h1>
+        <h2>Конфигурация сервиса</h2>
+        <div style="text-align: center;">
+            <a href="{{ url_for('index') }}">
+                <button type="button" class="telegram-button">CSV-ввод</button>
+            </a>
+            <a href="{{ url_for('manual') }}">
+                <button type="button" class="telegram-button">Ручной
+                    ввод</button>
+            </a>
+            <a href="/description"><button type="button"
+                    class="help-button">Справка</button></a>
+
+        </div>
+        <br>
+        <form method="post" enctype="multipart/form-data">
+            <div style="text-align: center;">
+                <label>Загрузите CSV-файл:</label>
+                <input type="file" name="csvfile" required><br><br>
+
+                <label>Имя файла для модели (пример: model.pkl):</label>
+                <input type="text" name="model_filename"
+                    value="9_clusters.pkl"><br><br>
+
+                <label>Имя файла для масштабировщика (пример:
+                    scaler.pkl):</label>
+                <input type="text" name="scaler_filename"
+                    value="scaler.pkl"><br><br>
+
+                <button type="submit" class="config-button">Обучить и
+                    сохранить</button>
+            </div>
+        </form>
+
+        {% if message %}
+        <p><strong>{{ message }}</strong></p>
+        {% endif %}
+
+    </body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Оценка кандидатов</title>
+        <link rel="stylesheet"
+            href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+
+    <body>
+        <h1>Оценка ролей на основе BIG-five</h1>
+        <h2>CSV-ввод</h2>
+        <div style="text-align: center;">
+            <a href="{{ url_for('manual') }}">
+                <button type="button" class="telegram-button">Ручной
+                    ввод</button>
+            </a>
+            <a href="/train"><button type="button"
+                    class="config-button">Настройки</button></a>
+            <a href="/description"><button type="button"
+                    class="help-button">Справка</button></a>
+            <br>
+            <br>
+            <form method="POST" enctype="multipart/form-data" action="/"
+                style="display: inline-block;">
+                <label>Загрузить CSV:</label>
+                <input type="file" name="csvfile" class="telegram-button"
+                    accept=".csv">
+                <br><br>
+                <button type="submit"
+                    class="config-button">Анализировать</button>
+            </form>
+        </div>
+        {% if prediction %}
+        <h2>{{ prediction }}</h2>
+        {% endif %}
+        <br>
+    </body>
+
+</html>

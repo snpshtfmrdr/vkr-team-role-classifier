@@ -1,0 +1,163 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f9fd;
+    padding: 40px;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+}
+
+button {
+    padding: 10px 15px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.telegram-button {
+    background-color: #229ED9;
+    /* основной синий Telegram */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.telegram-button:hover {
+    background-color: #1b8cc1;
+    transform: scale(1.02);
+}
+
+.telegram-button:active {
+    background-color: #1579a3;
+    transform: scale(0.98);
+}
+
+.config-button {
+    background-color: #0cf03d;
+    /* основной синий Telegram */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.config-button:hover {
+    background-color: #16cdae;
+    transform: scale(1.02);
+}
+
+.config-button:active {
+    background-color: #54d00c;
+    transform: scale(0.98);
+}
+
+.help-button {
+    background-color: #839702;
+    /* основной синий Telegram */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.help-button:hover {
+    background-color: #afcd16;
+    transform: scale(1.02);
+}
+
+.help-button:active {
+    background-color: #c6d00c;
+    transform: scale(0.98);
+}
+
+h1,
+h2,
+label {
+    text-align: center;
+}
+
+.hell-button {
+    background-color: #D92020;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    margin: 10px 5px;
+}
+
+.hell-button:hover {
+    background-color: #C21919;
+    transform: scale(1.02);
+}
+
+.hell-button:active {
+    background-color: #A31414;
+    transform: scale(0.98);
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f9fd;
+    padding: 40px;
+}
+
+form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.range-container {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.scale-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #444;
+    padding: 0 2px;
+}
+
+output {
+    font-weight: bold;
+    margin-left: 10px;
+}
