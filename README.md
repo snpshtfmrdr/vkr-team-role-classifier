@@ -21,7 +21,7 @@
 1. Клонируйте репозиторий:
 
    ```bash
-   git clone https://github.com/yourusername/team-role-classifier.git
+   git clone [https://github.com/yourusername/team-role-classifier.git](https://github.com/snpshtfmrdr/vkr-team-role-classifier.git
    cd team-role-classifier
    ```
 
